@@ -1,5 +1,5 @@
 class CalcMiningProfit
-  API_ENDPOINT = 'https://eth.ezil.me/api/'
+  API_ENDPOINT = 'https://eth.ezil.me/api/'.freeze
 
   attr_reader :coin, :coin_data
 
@@ -24,8 +24,8 @@ class CalcMiningProfit
     self.class.difficulty / coin_data.block_time
   end
 
-  def data
+  def chart_data
     current_time = DateTime.now
-    { current_time.beginning_of_day => 0, current_time.end_of_day => calc_profit }
+    { current_time.beginning_of_day => 0.0, current_time.end_of_day => calc_profit.round(2) }
   end
 end

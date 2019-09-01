@@ -1,8 +1,6 @@
 class MiningController < ApplicationController
   def home
-    @eth_data = CalcMiningProfit.new('ETH')
-    @etc_data = CalcMiningProfit.new('ETC')
-    @difficulty = CalcMiningProfit.difficulty
-    @coin = CoinConsts.new('ETC')
+    @eth = CalcMiningProfit.new('ETH')
+    @etc = CalcMiningProfit.new('ETC')
   end
 end
