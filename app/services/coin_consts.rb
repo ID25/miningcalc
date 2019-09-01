@@ -3,10 +3,12 @@ class CoinConsts
     'ETH' => {
       block_profit: 2.00,
       average_block_time: 13.48,
+      api_endpoint: 'https://eth.ezil.me/api/stats'
     },
     'ETC' => {
       block_profit: 3.79,
       average_block_time: 13.95,
+      api_endpoint: 'https://api-etc.ethermine.org/networkStats'
     }
   }.freeze
 
@@ -22,6 +24,10 @@ class CoinConsts
 
   def block_time
     CONSTS[coin][:average_block_time]
+  end
+
+  def api_endpoint
+    CONSTS[coin][:api_endpoint]
   end
 
   def h

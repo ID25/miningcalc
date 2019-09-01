@@ -1,6 +1,4 @@
 class CalcMiningProfit
-  API_ENDPOINT = 'https://eth.ezil.me/api/'.freeze
-
   attr_reader :coin, :coin_data
 
   def initialize(coin)
@@ -8,8 +6,13 @@ class CalcMiningProfit
     @coin_data = CoinConsts.new(coin)
   end
 
-  def self.difficulty
-    HTTParty.get("#{API_ENDPOINT}/stats")['nodes'].first['difficulty'].to_f
+  def difficulty
+    json = HTTParty.get(coin_data.api_endpoint)
+    if coin == 'ETC'
+      json['data']['difficulty'].to_f
+    elsif coin == 'ETH'
+      json['nodes'].first['difficulty'].to_f
+    end
   end
 
   def exchange_rate
@@ -21,7 +24,7 @@ class CalcMiningProfit
   end
 
   def hashrate
-    self.class.difficulty / coin_data.block_time
+    difficulty / coin_data.block_time
   end
 
   def chart_data
