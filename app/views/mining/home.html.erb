@@ -1,7 +1,3 @@
-<p>Difficulty <%= @difficulty  %></p>
-<p>Exchange rate ETH <%= @eth_data.exchange_rate  %></p>
-<p>Exchange rate ETC <%= @etc_data.exchange_rate  %></p>
-<%= @coin.block_profit %>
-<%= @coin.block_time %>
-
-<h2><%= @etc_data.calc_profit %></h2>
+<%= line_chart [@etc_data, @eth_data].map { |coin|
+    { name: coin.coin, data: coin.data }
+}, stacked: true, prefix: '$' %>

@@ -23,4 +23,9 @@ class CalcMiningProfit
   def hashrate
     self.class.difficulty / coin_data.block_time
   end
+
+  def data
+    current_time = DateTime.now
+    { current_time.beginning_of_day => 0, current_time.end_of_day => calc_profit }
+  end
 end
