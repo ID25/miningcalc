@@ -26,6 +26,7 @@ class CalcMiningProfit
 
   def chart_data
     current_time = DateTime.now
-    { current_time.beginning_of_day => 0.0, current_time.end_of_day => calc_profit.round(2) }
+    data = { current_time.beginning_of_day => 0.0, current_time.end_of_day => calc_profit.round(2) }
+    { name: coin, data: data }
   end
 end

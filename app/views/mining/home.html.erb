@@ -1,3 +1,1 @@
-<%= line_chart [@eth, @etc].map { |coin|
-    { name: coin.coin, data: coin.chart_data }
-}, prefix: '$', xtitle: 'Time', ytitle: 'Profit', defer: true, title: 'Mining profit for one day, 1GH/s' %>
+<%= line_chart mining_profit_data_path, prefix: '$', xtitle: 'Time', ytitle: 'Profit', defer: true, title: 'Mining profit for one day, 1GH/s', refresh: 60 %>
