@@ -35,6 +35,6 @@ class CoinConsts
   end
 
   def t
-    24.hours
+    1.minute
   end
 end
