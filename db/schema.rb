@@ -10,6 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 0) do
+ActiveRecord::Schema.define(version: 2019_09_02_162236) do
 
+  create_table "coins", force: :cascade do |t|
+    t.string "name", default: ""
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "cost_histories", force: :cascade do |t|
+    t.integer "coin_id", null: false
+    t.float "amount", null: false
+    t.float "difficulty", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["coin_id"], name: "index_cost_histories_on_coin_id"
+  end
+
+  add_foreign_key "cost_histories", "coins"
 end
